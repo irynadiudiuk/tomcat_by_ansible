@@ -1,0 +1,12 @@
+---
+# This playbook deploys a simple standalone Tomcat 7 server.
+
+- hosts: tommy
+  remote_user: root
+  become: yes
+  become_method: sudo
+  pre_tasks:
+    - debug: msg={{http_port}}
+  roles:
+    - selinux
+    - tomcat
