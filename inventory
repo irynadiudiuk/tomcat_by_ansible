@@ -1,24 +1,10 @@
-# Application servers
-#[app]
-#192.168.60.4
-#192.168.60.5
-
-# Database servers
-#[db]
-#192.168.60.5
-
 # Tomcat servers
 [tom]
 34.220.195.55
 
 # Group 'multi' with all servers
 [multi:children]
-#app
-#db
 tom
 
 # Variables that will be applied to all servers
 [multi:vars]
- ansible_ssh_user=jenkins
- ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/id_rsaexi
-
