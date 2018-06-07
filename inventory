@@ -1,6 +1,6 @@
 # Tomcat servers
 [tom]
-34.212.244.134
+34.213.56.227
 
 # Group 'multi' with all servers
 [multi:children]
@@ -8,3 +8,5 @@ tom
 
 # Variables that will be applied to all servers
 [multi:vars]
+
+ansible_user=ec2-user

@@ -1,7 +1,7 @@
 ---
 # This playbook deploys a simple standalone Tomcat 7 server.
 
-- hosts: tommy
+- hosts: tom
   remote_user: root
   become: yes
   become_method: sudo
@@ -10,3 +10,6 @@
   roles:
     - selinux
     - tomcat
+  vars:
+    http_port: 8080
+    https_port: 8443
