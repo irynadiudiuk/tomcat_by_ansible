@@ -10,3 +10,6 @@
 
 - name: Install libselinux-python
   yum: name=libselinux-python
+  
+- name: Install firewalld
+  yum: name=firewalld
