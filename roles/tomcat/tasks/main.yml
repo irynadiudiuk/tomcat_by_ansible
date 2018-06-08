@@ -55,3 +55,6 @@
 
 - name: wait for tomcat to start
   wait_for: port={{http_port}}
+
+- name: Copy WAR file
+  copy: src=hiapp.war dest=/usr/share/tomcat/webapps/ mode=0644 owner=tomcat group=tomcat
