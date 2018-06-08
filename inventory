@@ -1,6 +1,6 @@
 # Tomcat servers
 [tom]
-34.220.195.55
+172.31.27.100
 
 # Group 'multi' with all servers
 [multi:children]
