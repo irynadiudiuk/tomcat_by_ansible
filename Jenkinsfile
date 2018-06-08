@@ -18,14 +18,22 @@ pipeline {
                 sh 'ls -al' 
                   }
         }
-         stage('S3 download') {
+        
+        stage('S3 download') {
+            agent { label 'master' } 
+               steps {
+                 echo '...we are downloading file from S3'
+                 s3Download(file:"${WORKSPACE}/hiapp.war", bucket:'super-original-name-for-task-bucket-1-upload', path:'hiapp.war', force:true)
+                 sh 'ls -al'
+                 sh "scp ${WORKSPACE}/hiapp.war ${WORKSPACE}/roles/tomcat/files"
+                 /* sh 'ansible tom -m file -a "dest=/usr/share/tomcat/webapps/hiapp.war mode=644 owner=tomcat group=tomcat"' */
+                 }
+        }
+         stage('Deploying WAR file to Tomcat') {
             agent { label 'master' } 
                steps {
                  echo '...we are running ansible-playbook'
                  sh 'ansible-playbook site.yml'
-                 s3Download(file:"${WORKSPACE}/hiapp.war", bucket:'super-original-name-for-task-bucket-1-upload', path:'hiapp.war', force:true)
-                 sh 'ls -al'
-                 sh "scp ${WORKSPACE}/hiapp.war ${WORKSPACE}/roles/tomcat/files"
                  /* sh 'ansible tom -m file -a "dest=/usr/share/tomcat/webapps/hiapp.war mode=644 owner=tomcat group=tomcat"' */
                  }
         }
