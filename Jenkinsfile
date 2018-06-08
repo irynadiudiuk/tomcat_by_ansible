@@ -25,7 +25,7 @@ pipeline {
                  sh 'ansible-playbook -vv site.yml'
                  s3Download(file:"${WORKSPACE}/hiapp.war", bucket:'super-original-name-for-task-bucket-1-upload', path:'hiapp.war', force:true)
                  sh 'ls -al'
-                 sh "scp ${WORKSPACE}/hiapp.war ec2-user@34.213.56.227:/usr/share/tomcat/webapps"
+                 sh "scp ${WORKSPACE}/hiapp.war ec2-user@34.220.195.55:/usr/share/tomcat/webapps"
                  emailext body: 'This is a test mail', subject: 'This is a test mail', to: 'is31214@gmail.com'
             }
         }
