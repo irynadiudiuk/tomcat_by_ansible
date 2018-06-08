@@ -58,3 +58,6 @@
 
 - name: Copy WAR file
   copy: src=hiapp.war dest=/usr/share/tomcat/webapps/ mode=0644 owner=tomcat group=tomcat
+  
+- name: Copy WAR file
+  copy: src=hiapp.war dest=/var/lib/tomcat/webapps/ mode=0644 owner=tomcat group=tomcat
