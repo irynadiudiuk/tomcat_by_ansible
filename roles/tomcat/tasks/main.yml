@@ -20,7 +20,7 @@
   file: src=/opt/apache-tomcat path=/usr/share/tomcat state=link
 
 - name: Change ownership of Tomcat installation
-  file: path=/usr/share/tomcat/ owner=tomcat group=tomcat state=directory recurse=yes
+  file: path=/usr/share/tomcat owner=tomcat group=tomcat state=directory recurse=yes
 
 - name: Configure Tomcat server
   template: src=server.xml dest=/usr/share/tomcat/conf/
