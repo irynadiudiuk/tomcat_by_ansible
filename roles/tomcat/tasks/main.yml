@@ -31,8 +31,8 @@
   template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
   notify: restart tomcat
 
-- name: Install Tomcat init script
-  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
+#- name: Install Tomcat init script
+#  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
