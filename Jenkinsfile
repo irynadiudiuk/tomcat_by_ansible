@@ -33,7 +33,7 @@ pipeline {
             agent { label 'master' } 
                steps {
                  echo '...we are running ansible-playbook'
-                 sh 'ansible-playbook site.yml'
+                 sh 'ansible-playbook -vvv site.yml'
                  /* sh 'ansible tom -m file -a "dest=/usr/share/tomcat/webapps/hiapp.war mode=644 owner=tomcat group=tomcat"' */
                  }
         }
