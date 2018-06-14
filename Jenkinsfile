@@ -23,9 +23,7 @@ pipeline {
             agent { label 'master' } 
                steps {
                  echo '...we are downloading file from S3'
-                 s3Download(file:"${WORKSPACE}/hiapp.war", bucket:'super-original-name-for-task-bucket-1-upload', path:'hiapp.war', force:true)
-                 sh 'cd ${WORKSPACE}'
-                 sh "scp hiapp.war ec2-user@54.186.186.147:/tmp/hiapp.war"
+                 s3Download(file:"${WORKSPACE}/roles/tomcat/files/hiapp.war", bucket:'super-original-name-for-task-bucket-1-upload', path:'hiapp.war', force:true)
                  /* sh 'ansible tom -m file -a "dest=/usr/share/tomcat/webapps/hiapp.war mode=644 owner=tomcat group=tomcat"' */
                  }
         }
