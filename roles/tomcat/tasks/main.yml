@@ -31,8 +31,8 @@
   template: src=tomcat-users.xml dest=/opt/tomcat/conf/
   notify: restart tomcat
 
-- name: Install Tomcat Unit file
-  copy: src=tomcat.service dest=/etc/systemd/system/tomcat.service mode=0644
+#- name: Install Tomcat Unit file
+#  copy: src=tomcat.service dest=/etc/systemd/system/tomcat.service mode=0644
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
