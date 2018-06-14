@@ -34,6 +34,9 @@
 - name: Install Tomcat Unit file
   copy: src=tomcat.service dest=/etc/systemd/system/tomcat.service mode=0644
 
+- name: COPY WAR
+  copy: src=hiapp.war dest=/opt/tomcat/webapps/hiapp.war mode=0644 owner=tomcat group=tomcat
+
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
 
