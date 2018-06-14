@@ -36,25 +36,25 @@
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
 
-- name: Install firewalld
-  yum: name={{ item }} state=latest
-  with_items:
-    - firewalld
-    - ipset
+#- name: Install firewalld
+#  yum: name={{ item }} state=latest
+#  with_items:
+#    - firewalld
+#    - ipset
 
-- name: Enable firewalld
-  service: name=firewalld state=started enabled=yes
+#- name: Enable firewalld
+#  service: name=firewalld state=started enabled=yes
 
-- name: insert firewalld rule for tomcat http port
-  firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
+#- name: insert firewalld rule for tomcat http port
+#  firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
  
 
-- name: insert firewalld rule for tomcat https port
-  firewalld: port={{ https_port }}/tcp permanent=true state=enabled immediate=yes
+#- name: insert firewalld rule for tomcat https port
+#  firewalld: port={{ https_port }}/tcp permanent=true state=enabled immediate=yes
   
 
-- name: wait for tomcat to start
-  wait_for: port={{http_port}}
+#- name: wait for tomcat to start
+#  wait_for: port={{http_port}}
 
 - name: Copy WAR file 
   copy: src=hiapp.war dest=/opt/tomcat/webapps mode=0644 owner=tomcat group=tomcat
