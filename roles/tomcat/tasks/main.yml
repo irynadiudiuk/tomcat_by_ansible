@@ -50,11 +50,11 @@
  
 
 - name: insert firewalld rule for tomcat https port
-  firewalld: port={{ https_port }}/tcp permanent=true state=enabled immediate=yes
+  firewalld: port=8080/tcp permanent=true state=enabled immediate=yes
   
 
-- name: wait for tomcat to start
-  wait_for: port={{http_port}}
+#- name: wait for tomcat to start
+#  wait_for: port={{http_port}}
 
 - name: Copy WAR file 
   copy: src=hiapp.war dest=/opt/tomcat/webapps mode=0644 owner=tomcat group=tomcat
