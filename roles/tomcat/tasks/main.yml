@@ -32,7 +32,7 @@
   notify: restart tomcat
 
 - name: Install Tomcat Unit file
-  copy: src=tomcat.service dest=/etc/systemd/system/tomcat.service mode=0755
+  copy: src=tomcat.service dest=/etc/systemd/system/tomcat.service mode=0644
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
