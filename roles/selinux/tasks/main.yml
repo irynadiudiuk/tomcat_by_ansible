@@ -11,5 +11,5 @@
 - name: Install libselinux-python
   yum: name=libselinux-python
   
-- name: Install firewalld
-  yum: name=firewalld
+#- name: Install firewalld
+#  yum: name=firewalld
