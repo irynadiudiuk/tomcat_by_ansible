@@ -39,6 +39,8 @@
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
+  
+  
 
 #- name: deploy iptables rules
 #  template: src=iptables-save dest=/etc/sysconfig/iptables
@@ -50,5 +52,11 @@
 #- name: insert firewalld rule for tomcat https port
 #  firewalld: port={{ https_port }}/tcp permanent=true state=enabled immediate=yes
   
-#- name: wait for tomcat to start
-#  wait_for: port={{http_port}}
+
+- name: Wait for HTTP 200 or 401
+  uri: url=http://localhost:8080/hiapp/
+  retries: 30
+  delay: 5
+  register: result
+  until: ('status' in result) and (result.status == 200 or result.status == 401)
+  changed_when: false
